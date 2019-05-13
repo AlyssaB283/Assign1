@@ -43,7 +43,6 @@ var currentPlayer = 0;
 // Step 3c - Create a variable to store the first selected card
 var currentCard = null;
 
-
 // Step 4 - Iterate through the deck and bind a click event to each one
 for (let cardValue of deck) {
   // Step 4a - Create a new div element to be a card
@@ -64,26 +63,13 @@ for (let cardValue of deck) {
 // Step 5 - Create a function to store the logic
 // for when a card is selected
 function cardSelected (event) {
-  // Step 5a - Check if there is already a card selected
-  if(currentCard != null) {
-     // Step 6 - Compare the cards
-    if(currentCard.textContent === event.target.textContent) {
-      // Step 6b - Add a class to the 2 card elements
-      // flipping them over
-      currentCard.classList.add('flipped');
-      event.target.classList.add('flipped')
-      // Step 6c - Add a point to the score for this playe
-      playerScore[currentPlayer] += 1
-      score.textContent = playerScore.toString();
+      event.target.classList.add('flipped');
 
-      // Step 6d - Tell the player to go again
-      // (use string interpolation to show which player you're addressing)
-      message.textContent = `Congratulations! ${players[currentPlayer]}, please go again!`; 
-    } else {
-
+  function unFlip()
+  {
+      event.target.classList.remove('flipped');
       currentCard.classList.remove('flipped');
-      // Step 6e - Provide a fail message to the player
-      message.textContent = "Oh, so sorry!!! But yer' not psychic!";
+
       
       // Step 6f - Using a ternary, change players
       currentPlayer = (currentPlayer === 0) ? 1 : 0;
@@ -91,7 +77,29 @@ function cardSelected (event) {
       // Step 6g - Concatenate a message to the message element
       // advising player 2 that it's their turn now
       // (use string interpolation to show which player you're addressing)
-      message.textContent = `${players[currentPlayer]}, your turn!`;
+      message.textContent = `Oh, so sorry!!! But your not psychic! ${players[currentPlayer]}, your turn!`;
+  }
+  // Step 5a - Check if there is already a card selected
+  if(currentCard != null) {
+     // Step 6 - Compare the cards
+    if(currentCard.textContent === event.target.textContent) 
+    {
+      // Step 6b - Add a class to the 2 card elements
+      // flipping them over
+      currentCard.classList.add('flipped');
+      event.target.classList.add('flipped');
+      // Step 6c - Add a point to the score for this player
+      playerScore[currentPlayer] += 1
+      score.textContent = playerScore.toString();
+
+      // Step 6d - Tell the player to go again
+      // (use string interpolation to show which player you're addressing)
+      message.textContent = `Congratulations! ${players[currentPlayer]}, please go again!`; 
+    } 
+    else
+    {
+      event.target.classList.add('flipped');
+      setTimeout(unFlip(),2000);
     }   
     currentCard = null;
   } else {

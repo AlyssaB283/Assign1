@@ -1,16 +1,24 @@
-@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
+@import url('https://fonts.googleapis.com/css?family=Black+Han+Sans');
 /* Step 1 - Add a nice background */
 body {
 	margin: 60px;
 	 background-image: linear-gradient(teal, blue);
-	 font-family: 'Indie Flower', cursive;
+	 font-family:'Black Han Sans', sans-serif;
+	 
 }
-
+ .container{ display: flex;
+	  flex-direction: column;
+	  align-content: center;
+	}
+#cards
+{
+	margin: 39px;
+}
 /* Step 2 - Add a nice card style*/
 .card {
 position: relative;
 	display: inline-block;
-  border: 5px solid black;
+  border: 3px solid black;
   width:100px;
   height:140px;
   font-size: 30px;
@@ -20,10 +28,10 @@ position: relative;
 }
 
 /* Step 3 - Add a nice hover effect*/
-.card:hover {
+/*.card:hover {
  background-color: darkblue;
  color: darkblue;
-}
+}*/
 
 /*Step 4 (+4 points) - Write a style for a flipped card */
 .flipped {
@@ -43,37 +51,34 @@ position: relative;
 
 /* Step 6 - Add 5 more style changes... */
 /* 1) use flexbox to make cards evenly spaced*/
-#gameboard{
-  display: flex;
-
-	align-items: flex-start;
+#gameboard
+{
+ 
 }
 
 /* 2) */
 #score {
+	margin-left: 34%;
 	background-color: white;
-  
+  width: 15%;
   font-size: 25px;
 		padding: 30px;
 }
 
 }
 /* 4) */
-#container{
-	display: flex;
-	justify-content: center;
+#container
+{
 	border-color: black;
 }
    
 #reset{
-	width: 100%;
+	width: 75px;
+    margin-left: 35%;
 	border: none;
 	font-size: 20px;
 	background-color:darkblue;
 	color:white;
-}
-.hidden{
-  display:none;
 }
 #reset:hover {
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 
